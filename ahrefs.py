@@ -113,24 +113,26 @@ class Ahrefs:
             'Referer': 'https://ahrefs.com/user/login',
         }      
         data = {"country":country,"keyword":keyword}
-        response = requests.post('https://ahrefs.com/v3/api-adaptor/keSerpOverview', headers=headers,cookies=cookies, json=data, verify=True)
-        response = json.loads(response.text)
-        response = response[1]
-        results = response['results']
-        urls = []
-        for r in results:
-            try:
+        response2 = response = requests.post('https://ahrefs.com/v3/api-adaptor/keSerpOverview', headers=headers,cookies=cookies, json=data, verify=True)
+        try:
+            response = json.loads(response.text)
+            response = response[1]
+            results = response['results']
+            urls = []
+            for r in results:
                 try:
-                    if(isinstance(r['content'][1][0][1],dict)):
-                        r = r['content'][1][0][1]
-                except:
-                    if(isinstance(r['content'][1],dict)):
-                        r = r['content'][1]['link'][1]
-                try:
-                    urls.append(r['url'])                    
-                except:
-                    pass
-            except Exception as ex:
-                logger.error(ex)
-        
-        return urls
+                    try:
+                        if(isinstance(r['content'][1][0][1],dict)):
+                            r = r['content'][1][0][1]
+                    except:
+                        if(isinstance(r['content'][1],dict)):
+                            r = r['content'][1]['link'][1]
+                    try:
+                        urls.append(r['url'])                    
+                    except:
+                        pass
+                except Exception as ex:
+                    logger.error(ex)
+            return urls
+        except Exception as ex:
+            logger.error(response2.text)

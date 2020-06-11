@@ -74,5 +74,6 @@ class Crawler:
                 self.mysql_obj.save_final_url(link)
 
             except Exception as ex:
+                self.mysql_obj.block_domain(link)
                 logger.error("Error : " + str(ex))
 
