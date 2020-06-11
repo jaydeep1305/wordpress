@@ -40,12 +40,17 @@ if force_login :
 crawler_obj = Crawler(FB_COOKIE_URL,USE_FACEBOOK,parsed_obj,mysql_obj)
 crawler_obj.get_cookie()
 
-file_keywords = open('keywords.txt', 'r')
-keywords = file_keywords.readlines()
-for keyword in keywords: 
-    keyword = keyword.strip()
-    logger.info("----" + keyword +"-----")
-    urls = ahrefs_obj.serp_result("us",keyword)
-    for url in urls:
-        logger.info(keyword + " - " + url)
-        crawler_obj.crawler_data(url)
+# file_keywords = open('keywords.txt', 'r')
+# keywords = file_keywords.readlines()
+# for keyword in keywords: 
+#     keyword = keyword.strip()
+#     logger.info("----" + keyword +"-----")
+#     urls = ahrefs_obj.serp_result("us",keyword)
+#     for url in urls:
+#         print(url)
+
+file_urls = open('urls.txt', 'r')
+urls = file_urls.readlines()
+for url in urls: 
+    print(url)
+    crawler_obj.crawler_data(url)

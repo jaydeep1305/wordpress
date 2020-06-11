@@ -1,14 +1,11 @@
 import requests
 import redis
-import threading
 from db import Mysql
-from parse import Parse
-from loguru import logger
-from ahrefs import Ahrefs
-from crawler import Crawler
 from wordpress import Wordpress
-from bounded_pool_executor import BoundedThreadPoolExecutor
-
+from loguru import logger
+from crawler import Crawler
+from parse import Parse
+from ahrefs import Ahrefs
 AHREFS_USER = "jds6855@gmail.com"
 AHREFS_PASS = "nopassword1305"
 
@@ -26,6 +23,6 @@ FB_COOKIE_URL = "http://161.35.32.44:1305/"
 RAW_TOPIC = "google-urls"
 USE_FACEBOOK = False
 
-REDIS_HOST = "redis-do-user-2970341-0.a.db.ondigitalocean.com"
-REDIS_PORT = 25061
-REDIS_PASS = "averf7lt1x9cca8w"
+REDIS_HOST = "127.0.0.1"
+REDIS_PORT = 6379
+REDIS_PASS = ""
