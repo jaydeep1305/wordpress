@@ -1,0 +1,9 @@
+bounded-pool-executor
+requests
+confluent-kafka
+avro-python3
+redis
+loguru
+mysql-connector-python
+lxml
+bs4
